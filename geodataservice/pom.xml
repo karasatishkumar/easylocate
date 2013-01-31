@@ -7,14 +7,14 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>geodataservice Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<jackson-mapper-asl.version>1.9.9</jackson-mapper-asl.version>
 		<jaxb-api.version>2.2.7</jaxb-api.version>
 		<!--<spring-version>3.2.0.RELEASE</spring-version> -->
 		<spring-version>3.1.0.RELEASE</spring-version>
 	</properties>
-	
+
 	<dependencies>
 		<!-- Spring 3 dependencies -->
 		<dependency>
@@ -74,13 +74,14 @@
 				</configuration>
 			</plugin>
 			<plugin>
-        			<groupId>org.apache.maven.plugins</groupId>
-        			<artifactId>maven-war-plugin</artifactId>
-        			<version>2.3</version>
-        			<configuration>
-          				<outputDirectory>/usr/share/tomcat7/webapps</outputDirectory>
-        			</configuration>
-      			</plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<outputDirectory>
+						/usr/share/tomcat7/webapps</outputDirectory>
+				</configuration>
+			</plugin>
 		</plugins>
 		<finalName>geodataservice</finalName>
 	</build>
