@@ -4,41 +4,47 @@
 	<groupId>com.techiekernel.easylocate</groupId>
 	<artifactId>userservice</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>${app-version}</version>
 	<name>userservice Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	
+	<parent>
+		<groupId>com.techiekernel.easylocate</groupId>
+		<artifactId>easeylocate</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
 
-	<properties>
+	<!-- <properties>
 		<jackson-mapper-asl.version>1.9.9</jackson-mapper-asl.version>
 		<jaxb-api.version>2.2.7</jaxb-api.version>
-		<!--<spring-version>3.2.0.RELEASE</spring-version> -->
 		<spring-version>3.1.0.RELEASE</spring-version>
-	</properties>
+	</properties> -->
 
 	<dependencies>
 		<!-- Spring 3 dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.1.0.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -54,8 +60,8 @@
 		<!-- Easy Locate DAO Dependency -->
 		<dependency>
 			<groupId>com.techiekernel.easylocate</groupId>
-			<artifactId>EasyLocateData</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<artifactId>techikernel-easylocate-api</artifactId>
+			<version>${app-version}</version>
 		</dependency>
 
 	</dependencies>
@@ -78,7 +84,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.3</version>
 				<configuration>
-					<outputDirectory>/usr/share/tomcat7/webapps</outputDirectory>
+					<outputDirectory>${tomcat-location}</outputDirectory>
 				</configuration>
 			</plugin>
 		</plugins>

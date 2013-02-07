@@ -1,20 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.techiekernel.easylocate</groupId>
-        <artifactId>easeylocate</artifactId>
-        <packaging>pom</packaging>
-        <version>1.0-SNAPSHOT</version>
+	<artifactId>easeylocate</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
 	<name>EasyLocate Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<tomcat-location>1.9.9</tomcat-location>
+		<app-version>1.0-SNAPSHOT</app-version>
+		<jackson-mapper-asl.version>1.9.9</jackson-mapper-asl.version>
+		<jaxb-api.version>2.2.7</jaxb-api.version>
+		<spring-version>3.1.2.RELEASE</spring-version>
+		<spring-security-version>3.1.3.RELEASE</spring-security-version>
+		<junit-version>3.8.1</junit-version>
+		<spring-junit-version>4.7.0</spring-junit-version>
+		<cglib-version>2.2</cglib-version>
+		<mysql-connector-java-version>5.1.9</mysql-connector-java-version>
+		<hibernate-version>3.3.0.ga</hibernate-version>
+		<antlr-version>2.7.6</antlr-version>
+		<commons-collections-version>3.1</commons-collections-version>
+		<dom4j-version>1.6.1</dom4j-version>
+		<javassist-version>3.4.GA</javassist-version>
+		<jta-version>1.1</jta-version>
+		<slf4j-version>1.6.0</slf4j-version>
+		<apache.commons.dbcp-version>1.2.2.osgi</apache.commons.dbcp-version>
+		<apache.commons.pool-version>1.4.0</apache.commons.pool-version>
+		<commons-dbcp-version>1.2.2</commons-dbcp-version>
+		<mockito-version>1.8.4</mockito-version>
+		<servlet-api-version>2.5</servlet-api-version>
+		<tomcat-location>/usr/share/tomcat7/webapps</tomcat-location>
 	</properties>
+
 	<modules>
-    		<module>api</module>
-    		<module>userservice</module>
-    		<module>roleservice</module>
-    		<module>geodataservice</module>
-    		<module>tripservice</module>
-  	</modules>	
+		<module>api</module>
+		<module>spring-security-oauth2</module>
+		<module>userservice</module>
+		<module>roleservice</module>
+		<module>geodataservice</module>
+		<module>tripservice</module>
+		<module>oauth2</module>
+	</modules>
+
+	<developers>
+		<developer>
+			<id>1</id>
+			<name>Kara Satish Kumar</name>
+			<email>karasatishkumar@gmail.com</email>
+		</developer>
+	</developers>
+
 </project>

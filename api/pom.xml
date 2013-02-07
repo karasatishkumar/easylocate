@@ -4,9 +4,16 @@
 	<groupId>com.techiekernel.easylocate</groupId>
 	<artifactId>techikernel-easylocate-api</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>${app-version}</version>
 	<name>techiekernel-easylocate-api</name>
 	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>com.techiekernel.easylocate</groupId>
+		<artifactId>easeylocate</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
 
 	<repositories>
 		<repository>
@@ -46,19 +53,11 @@
 		</repository>
 	</repositories>
 
-
-	<properties>
-		<jackson-mapper-asl.version>1.9.9</jackson-mapper-asl.version>
-		<jaxb-api.version>2.2.7</jaxb-api.version>
-		<!--<spring-version>3.2.0.RELEASE</spring-version> -->
-		<spring-version>3.1.0.RELEASE</spring-version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit-version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -90,7 +89,7 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
-			<version>2.2</version>
+			<version>${cglib-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -106,75 +105,70 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.9</version>
+			<version>${mysql-connector-java-version}</version>
 		</dependency>
 
 		<!-- Hibernate framework -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>3.0.0.ga</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
-			<version>3.3.0.ga</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<version>${hibernate-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>antlr</groupId>
 			<artifactId>antlr</artifactId>
-			<version>2.7.6</version>
+			<version>${antlr-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<version>3.1</version>
+			<version>${commons-collections-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
-			<version>1.6.1</version>
+			<version>${dom4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.4.GA</version>
+			<version>${javassist-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
-			<version>1.1</version>
+			<version>${jta-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.6.0</version>
+			<version>${slf4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.0</version>
+			<version>${slf4j-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>com.springsource.org.apache.commons.dbcp</artifactId>
-			<version>1.2.2.osgi</version>
+			<version>${apache.commons.dbcp-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>com.springsource.org.apache.commons.pool</artifactId>
-			<version>1.4.0</version>
+			<version>${apache.commons.pool-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.2.2</version>
+			<version>${commons-dbcp-version}</version>
 		</dependency>
 		<!-- Hibernate library dependecy end -->
 
@@ -186,7 +180,7 @@
 		<dependency>
 			<groupId>org.junit</groupId>
 			<artifactId>com.springsource.org.junit</artifactId>
-			<version>4.7.0</version>
+			<version>${spring-junit-version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -199,7 +193,7 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
-			<version>1.8.4</version>
+			<version>${mockito-version}</version>
 		</dependency>
 	</dependencies>
 	<build>
