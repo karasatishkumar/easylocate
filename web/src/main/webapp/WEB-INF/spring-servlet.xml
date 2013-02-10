@@ -19,13 +19,6 @@
 		<anonymous />
 	</http>
 	
-	<authentication-manager>
-	  <authentication-provider>
-		<user-service>
-		</user-service>
-	  </authentication-provider>
-	</authentication-manager>
-	
 	<mvc:annotation-driven />
 
 	<mvc:default-servlet-handler />
