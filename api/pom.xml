@@ -211,6 +211,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>techiekernel-easylocate-api</finalName>
+		<!-- <finalName>techiekernel-easylocate-api</finalName> -->
 	</build>
 </project>
