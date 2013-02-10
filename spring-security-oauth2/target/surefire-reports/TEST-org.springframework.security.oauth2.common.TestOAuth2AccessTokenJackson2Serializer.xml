@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="1.419" errors="0" skipped="0" tests="10" name="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer">
+<testsuite failures="0" time="1.095" errors="0" skipped="0" tests="10" name="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-7-oracle/jre/lib/i386"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="/home/satish/code-base/code-playground/EASYLOCATE/spring-security-oauth2"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-oracle/jre/lib/endorsed"/>
     <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/tmp/surefirebooter7090669711590344771.jar"/>
+    <property name="surefire.real.class.path" value="/tmp/surefirebooter4558738366193818031.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-oracle/jre"/>
-    <property name="sun.java.command" value="/tmp/surefirebooter7090669711590344771.jar /tmp/surefire3828549142814668679tmp /tmp/surefire2991373704310596095tmp"/>
+    <property name="sun.java.command" value="/tmp/surefirebooter4558738366193818031.jar /tmp/surefire3245893387631329746tmp /tmp/surefire544608275627549819tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -59,14 +59,14 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.795" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringNoRefresh"/>
-  <testcase time="0.027" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithRefresh"/>
-  <testcase time="0.031" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithEmptyScope"/>
-  <testcase time="0.066" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithSingleScopes"/>
-  <testcase time="0.073" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithNullScope"/>
-  <testcase time="0.072" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithEmptyStringScope"/>
-  <testcase time="0.071" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithQuoteInScope"/>
-  <testcase time="0.055" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithMultiScopes"/>
-  <testcase time="0.055" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithMac"/>
-  <testcase time="0.069" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueWithAdditionalInformation"/>
+  <testcase time="0.616" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringNoRefresh"/>
+  <testcase time="0.034" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithRefresh"/>
+  <testcase time="0.023" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithEmptyScope"/>
+  <testcase time="0.091" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithSingleScopes"/>
+  <testcase time="0.07" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithNullScope"/>
+  <testcase time="0.048" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithEmptyStringScope"/>
+  <testcase time="0.046" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithQuoteInScope"/>
+  <testcase time="0.023" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithMultiScopes"/>
+  <testcase time="0.023" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueAsStringWithMac"/>
+  <testcase time="0.03" classname="org.springframework.security.oauth2.common.TestOAuth2AccessTokenJackson2Serializer" name="writeValueWithAdditionalInformation"/>
 </testsuite>

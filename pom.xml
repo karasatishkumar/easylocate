@@ -40,7 +40,7 @@
 		<module>geodataservice</module>
 		<module>tripservice</module>
 		<module>oauth2</module>
-    <module>web</module>
+		<module>web</module>
   </modules>
 
 	<developers>

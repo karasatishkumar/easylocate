@@ -19,7 +19,7 @@
     <property name="basedir" value="/home/satish/code-base/code-playground/EASYLOCATE/oauth2"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-7-oracle/jre/lib/endorsed"/>
     <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/tmp/surefirebooter1674373046707658239.jar"/>
+    <property name="surefire.real.class.path" value="/tmp/surefirebooter8900100074630161106.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>
@@ -42,7 +42,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="/usr/lib/jvm/java-7-oracle/jre"/>
-    <property name="sun.java.command" value="/tmp/surefirebooter1674373046707658239.jar /tmp/surefire3937702119215461298tmp /tmp/surefire802745267115302619tmp"/>
+    <property name="sun.java.command" value="/tmp/surefirebooter8900100074630161106.jar /tmp/surefire7684766224320771886tmp /tmp/surefire3589398852677860742tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
