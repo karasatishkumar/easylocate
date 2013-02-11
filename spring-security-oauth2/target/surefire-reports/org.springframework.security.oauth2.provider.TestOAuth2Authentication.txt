@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.springframework.security.oauth2.provider.TestOAuth2Authentication
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 sec
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 sec

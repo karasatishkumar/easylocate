@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: org.springframework.security.oauth2.http.converter.jaxb.TestJaxbOAuth2AccessTokenMessageConverter
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.908 sec
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.956 sec
