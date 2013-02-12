@@ -22,4 +22,7 @@ http://localhost:8080/oauth2/oauth/token?grant_type=authorization_code&code=B9ed
 http://localhost:8080/oauth2/oauth/authorize?response_type=token&client_id=easylocate&redirect_uri=http://localhost:8080/web&scope=read
 
 ##Password Based Authentication
-http://localhost:8080/oauth2/oauth/token?grant_type=password&username=admin&password=admin&client_id=easylocate
+curl -i -X POST -d "client_id=easylocate&grant_type=password&username=admin&password=admin&client_secret=secret" http://localhost:8080/oauth2/oauth/token
+
+##Client Credential Based##
+curl -i -X POST -d "client_id=easylocate&grant_type=client_credentials&client_secret=secret" http://localhost:8080/oauth2/oauth/token
