@@ -26,3 +26,11 @@ curl -i -X POST -d "client_id=easylocate&grant_type=password&username=admin&pass
 
 ##Client Credential Based##
 curl -i -X POST -d "client_id=easylocate&grant_type=client_credentials&client_secret=secret" http://localhost:8080/oauth2/oauth/token
+
+curl -i -H "Authorization: Bearer 7e14c979-7039-49d0-9c5d-854efe7f5b38" http://localhost:8080/userservice/api/user/1
+
+curl -i -X POST -d "client_id=easylocate&grant_type=client_credentials&client_secret=secret" http://localhost:8080/roleservice/oauth/token
+
+http://localhost:8080/roleservice/api/oauth/authorize?response_type=token&client_id=easylocate&redirect_uri=http://localhost:8080/web&scope=read
+
+http://localhost:8080/roleservice/oauth/authorize?response_type=code&client_id=easylocate&scope=read&redirect_uri=http://localhost:8080/web
