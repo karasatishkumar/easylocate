@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2-1.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!--apply the oauth client context -->
+	<oauth:client id="oauth2ClientFilter" />
+
+	<!--define an oauth 2 resource for sparklr -->
+	<oauth:resource id="aouth2" type="authorization_code" client-id="web" client-secret="secret"
+		access-token-uri="http://localhost:8080/oauth2/oauth/token" user-authorization-uri="http://localhost:8080/oauth2/oauth/authorize" scope="read,write" />
+		
+	<mvc:annotation-driven />
+
+	<mvc:default-servlet-handler />
+</beans>

@@ -16,7 +16,7 @@ curl -i -X POST -d "client_id=my-trusted-client&grant_type=password&username=mar
 ##Web Server based app request##
 http://localhost:8080/oauth2/oauth/authorize?response_type=code&client_id=easylocate&scope=read&redirect_uri=http://localhost:8080/web
 
-http://localhost:8080/oauth2/oauth/token?grant_type=authorization_code&code=B9edZO&redirect_uri=http://localhost:8080/web&client_id=easylocate&client_secret=secret
+http://localhost:8080/oauth2/oauth/token?grant_type=authorization_code&code=H7Dfm3&redirect_uri=http://localhost:8080/roleservice/role&client_id=easylocate&client_secret=secret
 
 ##Browser Based request#
 http://localhost:8080/oauth2/oauth/authorize?response_type=token&client_id=easylocate&redirect_uri=http://localhost:8080/web&scope=read
@@ -34,3 +34,8 @@ curl -i -X POST -d "client_id=easylocate&grant_type=client_credentials&client_se
 http://localhost:8080/roleservice/api/oauth/authorize?response_type=token&client_id=easylocate&redirect_uri=http://localhost:8080/web&scope=read
 
 http://localhost:8080/roleservice/oauth/authorize?response_type=code&client_id=easylocate&scope=read&redirect_uri=http://localhost:8080/web
+
+http://localhost:8080/oauth2/oauth/authorize?response_type=token&client_id=easylocate&redirect_uri=http://localhost:8080/web&scope=read
+
+
+http://localhost:8080/sparklr/oauth/authorize?response_type=token&client_id=tonr&scope=read&redirect_uri=http://localhost:8080/web
