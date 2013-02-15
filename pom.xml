@@ -35,12 +35,12 @@
 	<modules>
 		<module>api</module>
 		<module>spring-security-oauth2</module>
-		<module>userservice</module>
+		<!-- <module>userservice</module> -->
 		<module>roleservice</module>
-		<module>geodataservice</module>
+		<!-- <module>geodataservice</module>
 		<module>tripservice</module>
 		<module>oauth2</module>
-		<module>web</module>
+		<module>web</module> -->
   </modules>
 
 	<developers>

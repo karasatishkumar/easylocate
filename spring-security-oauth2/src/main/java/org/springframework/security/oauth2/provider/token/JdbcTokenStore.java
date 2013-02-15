@@ -145,11 +145,11 @@ public class JdbcTokenStore implements TokenStore {
 	public OAuth2AccessToken readAccessToken(String tokenValue) {
 		OAuth2AccessToken accessToken = null;
 		try {
-			accessToken = jdbcTemplate.queryForObject(selectAccessTokenSql, new Object[] {extractTokenKey(tokenValue)}, new RowMapper<OAuth2AccessToken>() {
+			accessToken = jdbcTemplate.queryForObject(selectAccessTokenSql, new RowMapper<OAuth2AccessToken>() {
 				public OAuth2AccessToken mapRow(ResultSet rs, int rowNum) throws SQLException {
 					return deserializeAccessToken(rs.getBytes(2));
 				}
-			});
+			}, extractTokenKey(tokenValue));
 		}
 		catch (EmptyResultDataAccessException e) {
 			if (LOG.isInfoEnabled()) {
