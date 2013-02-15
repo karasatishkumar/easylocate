@@ -14,7 +14,7 @@ import com.techiekernel.easylocate.pojo.Role;
 import com.techiekernel.easylocate.service.RoleService;
 
 @Controller
-@RequestMapping("/role")
+@RequestMapping("/api/role")
 public class RoleWebService {
 
 	@Autowired

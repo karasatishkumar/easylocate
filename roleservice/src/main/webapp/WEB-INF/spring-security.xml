@@ -51,11 +51,11 @@
 	
 	<!-- The OAuth2 protected resources are separated out into their own block so we can deal with authorization and error handling 
 		separately. This isn't mandatory, but it makes it easier to control the behaviour. -->
-	<http pattern="/role/**" create-session="never" entry-point-ref="oauthAuthenticationEntryPoint"
+	<http pattern="/api/role/**" create-session="never" entry-point-ref="oauthAuthenticationEntryPoint"
 		access-decision-manager-ref="accessDecisionManager" xmlns="http://www.springframework.org/schema/security">
 		<anonymous enabled="false" />
-		<intercept-url pattern="/role" access="ROLE_USER,SCOPE_READ" />
-		<intercept-url pattern="/role/**" access="ROLE_USER,SCOPE_READ" />
+		<intercept-url pattern="/api/role" access="ROLE_USER,SCOPE_READ" />
+		<intercept-url pattern="/api/role/**" access="ROLE_USER,SCOPE_READ" />
 		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
 		<access-denied-handler ref="oauthAccessDeniedHandler" />
 	</http>
@@ -76,12 +76,6 @@
 		class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
 		<property name="realmName" value="roleservice" />
 	</bean>
-
-	<!-- <bean id="clientAuthenticationEntryPoint"
-		class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
-		<property name="realmName" value="oauth2/client" />
-		<property name="typeName" value="Basic" />
-	</bean> -->
 
 	<bean id="oauthAccessDeniedHandler"
 		class="org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler" />
