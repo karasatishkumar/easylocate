@@ -14,7 +14,7 @@ import com.techiekernel.easylocate.pojo.GeoData;
 import com.techiekernel.easylocate.service.GeoDataService;
 
 @Controller
-@RequestMapping("/geodata")
+@RequestMapping("/api/geodata")
 public class GeoDataWebService {
 
 	@Autowired
