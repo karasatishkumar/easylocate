@@ -38,8 +38,8 @@
 		<!-- <module>userservice</module> -->
 		<module>roleservice</module>
 		<module>geodataservice</module>
-		<!-- <module>tripservice</module>
-		<module>oauth2</module>
+		<module>tripservice</module>
+		<!-- <module>oauth2</module>
 		<module>web</module> -->
   </modules>
 

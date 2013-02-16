@@ -6,6 +6,8 @@ curl -i -H "Authorization: Bearer e1395350-b6cb-46d6-89e6-768920f75040" http://l
 
 curl -i -H "Authorization: Bearer 2ef4e853-92ec-4f11-9638-ad97b6835b9f" http://localhost:8080/roleservice/role
 
+curl -i -H "Authorization: Bearer 2ef4e853-92ec-4f11-9638-ad97b6835b9f" http://localhost:8080/tripservice/trip
+
 curl -i "http://marissa:koala@localhost:8080/oauth2/index.jsp"
 
 curl -i -X POST -d "client_id=my-client-with-registered-redirect&grant_type=client_credentials" http://localhost:8080/oauth2/oauth/token
@@ -23,6 +25,7 @@ http://localhost:8080/oauth2/oauth/token?grant_type=authorization_code&code=H7Df
 ##Browser Based request#
 http://localhost:8080/oauth2/oauth/authorize?response_type=token&client_id=easylocate&redirect_uri=http://localhost:8080/web&scope=read
 http://localhost:8080/roleservice/oauth/authorize?response_type=token&client_id=easylocate&scope=read
+http://localhost:8080/tripservice/oauth/authorize?response_type=token&client_id=easylocate&scope=read
 
 ##Password Based Authentication
 curl -i -X POST -d "client_id=easylocate&grant_type=password&username=admin&password=admin&client_secret=secret" http://localhost:8080/oauth2/oauth/token
