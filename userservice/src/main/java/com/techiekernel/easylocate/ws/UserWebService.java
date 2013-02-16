@@ -14,7 +14,7 @@ import com.techiekernel.easylocate.pojo.User;
 import com.techiekernel.easylocate.service.UserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserWebService {
 
 	@Autowired
