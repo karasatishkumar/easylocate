@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: org.springframework.security.oauth2.http.converter.jaxb.TestJaxbOAuth2ExceptionMessageConverter
--------------------------------------------------------------------------------
-Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.183 sec
