@@ -14,7 +14,7 @@ import com.techiekernel.easylocate.pojo.Trip;
 import com.techiekernel.easylocate.service.TripService;
 
 @Controller
-@RequestMapping("/trip")
+@RequestMapping("/api/trip")
 public class TripWebService {
 
 	@Autowired
