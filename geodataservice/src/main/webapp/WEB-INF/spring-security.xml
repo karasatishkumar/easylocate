@@ -154,7 +154,7 @@
 	</oauth:authorization-server>
 
 	<oauth:resource-server id="resourceServerFilter"
-		resource-id="roleservice" token-services-ref="tokenServices" />
+		resource-id="geodataservice" token-services-ref="tokenServices" />
 
 	<oauth:client-details-service id="clientDetails">
 		<oauth:client client-id="easylocate" resource-ids="geodataservice"
