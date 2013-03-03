@@ -74,7 +74,7 @@
 
 	<bean id="oauthAuthenticationEntryPoint"
 		class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint">
-		<property name="realmName" value="userservice" />
+		<property name="realmName" value="techiekernel" />
 	</bean>
 
 	<bean id="oauthAccessDeniedHandler"
@@ -154,10 +154,10 @@
 	</oauth:authorization-server>
 
 	<oauth:resource-server id="resourceServerFilter"
-		resource-id="userservice" token-services-ref="tokenServices" />
+		resource-id="techiekernel" token-services-ref="tokenServices" />
 
 	<oauth:client-details-service id="clientDetails">
-		<oauth:client client-id="easylocate" resource-ids="userservice"
+		<oauth:client client-id="easylocate" resource-ids="techiekernel"
 			authorized-grant-types="password,authorization_code,refresh_token,implicit,client_credentials"
 			authorities="ROLE_CLIENT" scope="read,write" secret="secret"
 			redirect-uri="${redirect-uri}" />
