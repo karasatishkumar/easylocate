@@ -38,7 +38,7 @@ public class GeoDataWebService {
 		return geoDataService.saveOrUpdateGeoData(geoData);
 	}
 
-	@RequestMapping(value = "/{geo dataId}", method = RequestMethod.PUT, headers = "Accept=application/json", produces = { "application/json" }, consumes = { "application/json" })
+	@RequestMapping(value = "/{geoDataId}", method = RequestMethod.PUT, headers = "Accept=application/json", produces = { "application/json" }, consumes = { "application/json" })
 	@ResponseBody
 	public boolean editFoobar(@RequestBody GeoData geoData, @PathVariable int geoDataId) {
 		if (geoData.getGeoDataId() != null)
