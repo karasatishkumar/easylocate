@@ -6,23 +6,17 @@
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
   <title>Techie Kernel</title>
   <link type="text/css" rel="stylesheet" href="<c:url value="/styles/style.css"/>"/>
-
 </head>
+
 <body>
 
   <h1>Techie Kernel</h1>
 
   <div id="content">
-    
-    <p>You have successfully authorized at <b>Techie Kernel</b></p>
-
-    
-      <div style="text-align: center"><form action="<c:url value="/logout.do"/>"><input type="submit" value="Logout"></form></div>
-      
-      
+     <p>You have successfully authorized at <b>Techie Kernel</b></p>
   </div>
 
-  <div id="footer"><a href="www.techiekernel.com" target="_blank">Techie Kernel</a></div>
+  <div id="footer"><a href="www.techiekernel.com" target="_blank">Techie Kernely</a></div>
 
 
 </body>
