@@ -49,7 +49,4 @@ CREATE TABLE TRIP(
    FOREIGN KEY (TRIP_USER) REFERENCES USER(USER_ID)
 );
 
-Maven Create:
-
-mvn archetype:generate -DgroupId=com.techiekernel.easylocate -DartifactId=EasyLocateUserService -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
 

@@ -29,16 +29,16 @@
 		<commons-dbcp-version>1.2.2</commons-dbcp-version>
 		<mockito-version>1.8.4</mockito-version>
 		<servlet-api-version>2.5</servlet-api-version>
-		<tomcat-location>/usr/share/tomcat7/webapps</tomcat-location>
+		<tomcat-location>/usr/share/apache-tomcat-7.0.39/webapps</tomcat-location>
 	</properties>
 
 	<modules>
-		<!-- <module>api</module>
+		<module>api</module>
 		<module>spring-security-oauth2</module>
 		<module>userservice</module>
 		<module>roleservice</module>
 		<module>geodataservice</module>
-		<module>tripservice</module> -->
+		<module>tripservice</module>
 		<module>web</module>
   </modules>
 
