@@ -32,6 +32,7 @@
 		<tomcat-location>/usr/share/apache-tomcat-7.0.39/webapps</tomcat-location>
 	</properties>
 
+
 	<modules>
 		<module>api</module>
 		<module>spring-security-oauth2</module>
