@@ -4,10 +4,8 @@ define(['backbone', 'text!../../templates/header.tmpl'], function(Backbone, head
 	  var HeaderView = Backbone.View.extend({
 
 		template : _.template(headerTemplate),
-		el: $('div.head'),
+		el: $('div.page-header'),
 		initialize : function() {
-			//Var headtmpl =$("#headtmpl").html();
-			//this.template=headTemplString;
 			this.render();
 		},
 		

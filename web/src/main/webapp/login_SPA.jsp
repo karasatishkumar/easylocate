@@ -1,13 +1,14 @@
 <!doctype html>
 <head>
-	<title>Techikernel</title>
-	<script data-main="js/main" src="js/libs/require/require.js"></script>
+<title>Techie Kernel</title>
+<script data-main="js/main" src="js/libs/require.js"></script>
+<link rel="stylesheet" type="text/css" href="css/styles.css"/>
 </head>
 <body>
 
 <div id="container">
-  <div id="logo">
-    <h1>Techie Kernel</h1>
+  <div class="page-header">
+    
   </div>
   
   <div id="content">
