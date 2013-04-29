@@ -11,11 +11,11 @@
     
   </div>
   
-  <div id="content">
+  <div id="content" class="custom-content">
     Loading....
   </div>
   
-  <div id="footer">
+  <div id="footer" class="custom-footer">
   </div>
 </div> 
 

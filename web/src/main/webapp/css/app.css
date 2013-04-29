@@ -1,10 +1,54 @@
 .custom-header {
 	width: 920px;
 	margin: 0 auto;
-	display; block;
+	display;
+	block;
 }
 
 .custom-logo {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-weight: bold;	
-} 
+	color: #333333;
+	display: block;
+	font-weight: bold;
+	margin-left: 5px;
+	padding: 5px;
+	transition: all 0.1s ease-in 0s;
+}
+
+.top-nav {
+	float: right;
+	list-style: none outside none;
+}
+
+.top-nav>li {
+	float: left;
+}
+
+.top-nav>li>a {
+	color: #333333;
+	display: block;
+	font-weight: bold;
+	margin-left: 5px;
+	padding: 5px;
+	transition: all 0.1s ease-in 0s;
+}
+
+.custom-content {
+	width: 920px;
+	margin: 0 auto; display; block;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.custom-footer {
+	width: 920px;
+	margin: 0 auto; display; block;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.divider-vertical {
+    background-color: #E5E5E5;
+    border-right: 1px solid #FFFFFF;
+    float: left;
+    height: 40px;
+    margin: 0 10px;
+    width: 1px;
+}
