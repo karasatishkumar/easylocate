@@ -1,36 +1,31 @@
-/*jslint bitwise: true, nomen: true, plusplus: true, white: true */
-
 /*!
-* Mediator.js Library v0.9.4
+* Mediator.js Library v0.7.0
 * https://github.com/ajacksified/Mediator.js
 *
-* Copyright 2013, Jack Lawson
+* Copyright 2011, Jack Lawson
 * MIT Licensed (http://www.opensource.org/licenses/mit-license.php)
 *
-* For more information: http://thejacklawson.com/2011/06/mediators-for-modularized-asynchronous-programming-in-javascript/index.html
+* For more information: http://www.thejacklawson.com/index.php/2011/06/mediators-for-modularized-asynchronous-programming-in-javascript/
 * Project on GitHub: https://github.com/ajacksified/Mediator.js
 *
-* Last update: Jan 04 2013
+* Last update: Sep 15 2011
 */
 
 (function(root, factory) {
-  'use strict';
-
-  if(typeof root.exports === 'function') {
+  if (typeof exports === 'function') {
     // Node/CommonJS
-    root.exports.Mediator = factory();
-  } else if(typeof define === 'function' && define.amd) {
+    exports.Mediator = factory();
+  } else if (typeof define === 'function' && define.amd) {
     // AMD
-    define('mediator-js', [], function() {
-      root.Mediator = factory();
-      return root.Mediator();
+    define([], function() {
+      // export to global too for backward compatiblity
+      return (root.Mediator = factory());
     });
   } else {
-    // Browser global
+    // browser global
     root.Mediator = factory();
   }
-}(this, function() {
-  'use strict';
+})(this, function() {
 
   // We'll generate guids for class instances for easy referencing later on.
   // Subscriber instances will have an id that can be refernced for quick
@@ -40,9 +35,8 @@
     var S4 = function() {
        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     };
-
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-  }
+  };
 
   // Subscribers are instances of Mediator Channel registrations. We generate
   // an object instance so that it can be updated later on without having to
@@ -50,187 +44,180 @@
   // to be called, options object, and context.
 
   function Subscriber(fn, options, context){
-    if(!(this instanceof Subscriber)) {
-      return new Subscriber(fn, options, context);
+    if (!this instanceof Subscriber) {
+      return new Subscriber(fn, context, options);
+    }else{
+      this.id = guidGenerator();
+      this.fn = fn;
+      this.options = options;
+      this.context = context;
+      this.channel = null;
     }
-
-    this.id = guidGenerator();
-    this.fn = fn;
-    this.options = options;
-    this.context = context;
-    this.channel = null;
-  }
+  };
 
   Subscriber.prototype = {
-    // Mediator.update on a subscriber instance can update its function,context,
+    // Mediator.Update on a subscriber instance can update its function,context,
     // or options object. It takes in an object and looks for fn, context, or
     // options keys.
 
-    update: function(options){
+    Update: function(options){
       if(options){
         this.fn = options.fn || this.fn;
         this.context = options.context || this.context;
         this.options = options.options || this.options;
-        if(this.channel && this.options && this.options.priority !== undefined) {
-            this.channel.setPriority(this.id, this.options.priority);
+        if (this.channel && this.options && this.options.priority != undefined) {
+            this.channel.SetPriority(this.id, this.options.priority);
         }
       }
     }
   };
 
 
-  function Channel(namespace, parent){
-    if(!(this instanceof Channel)) {
+  function Channel(namespace){
+    if (!this instanceof Channel) {
       return new Channel(namespace);
+    }else{
+      this.namespace = namespace || "";
+      this._callbacks = [];
+      this._channels = [];
+      this.stopped = false;
     }
+  };
 
-    this.namespace = namespace || "";
-    this._subscribers = [];
-    this._channels = [];
-    this._parent = parent;
-    this.stopped = false;
-  }
-
-  // A Mediator channel holds a list of sub-channels and subscribers to be fired
-  // when Mediator.publish is called on the Mediator instance. It also contains
-  // some methods to manipulate its lists of data; only setPriority and
+  // A Mediator channel holds a list of sub-channels and callbacks to be fired
+  // when Mediator.Publish is called on the Mediator instance. It also contains
+  // some methods to manipulate its lists of data; only SetPriority and
   // StopPropagation are meant to be used. The other methods should be accessed
   // through the Mediator instance.
 
   Channel.prototype = {
-    addSubscriber: function(fn, options, context){
-      var subscriber = new Subscriber(fn, options, context);
+    AddSubscriber: function(fn, options, context){
+      var callback = new Subscriber(fn, options, context);
 
       if(options && options.priority !== undefined){
-        // Cheap hack to either parse as an int or turn it into 0. Runs faster
-        // in many browsers than parseInt with the benefit that it won't
-        // return a NaN.
         options.priority = options.priority >> 0;
 
-        if(options.priority < 0){ options.priority = 0; }
-        if(options.priority >= this._subscribers.length){ options.priority = this._subscribers.length-1; }
+        if(options.priority < 0) options.priority = 0;
+        if(options.priority > this._callbacks.length) options.priority = this._callbacks.length;
 
-        this._subscribers.splice(options.priority, 0, subscriber);
+        this._callbacks.splice(options.priority, 0, callback);
       }else{
-        this._subscribers.push(subscriber);
+        this._callbacks.push(callback);
       }
 
-      subscriber.channel = this;
+      callback.channel = this;
 
-      return subscriber;
+      return callback;
     },
 
-    // The channel instance is passed as an argument to the mediator subscriber,
-    // and further subscriber propagation can be called with
+    // The channel instance is passed as an argument to the mediator callback,
+    // and further callback propagation can be called with
     // channel.StopPropagation().
-    stopPropagation: function(){
+    StopPropagation: function(){
       this.stopped = true;
     },
 
-    getSubscriber: function(identifier){
-      var x = 0,
-          y = this._subscribers.length;
+    GetSubscriber: function(identifier){
+      for(var x = 0, y = this._callbacks.length; x < y; x++){
+        if(this._callbacks[x].id == identifier || this._callbacks[x].fn == identifier){
+          return this._callbacks[x];
+        }
+      }
 
-      for(x, y; x < y; x++){
-        if(this._subscribers[x].id === identifier || this._subscribers[x].fn === identifier){
-          return this._subscribers[x];
+      for(var z in this._channels){
+        if(this._channels.hasOwnProperty(z)){
+          var sub = this._channels[z].GetSubscriber(identifier);
+          if(sub !== undefined){
+            return sub;
+          }
         }
       }
     },
 
-    // Channel.setPriority is useful in updating the order in which Subscribers
-    // are called, and takes an identifier (subscriber id or named function) and
+    // Channel.SetPriority is useful in updating the order in which Subscribers
+    // are called, and takes an identifier (Callback id or named function) and
     // an array index. It will not search recursively through subchannels.
 
-    setPriority: function(identifier, priority){
-      var oldIndex = 0,
-          x = 0,
-          sub, firstHalf, lastHalf, y;
+    SetPriority: function(identifier, priority){
+      var oldIndex = 0;
 
-      for(x = 0, y = this._subscribers.length; x < y; x++){
-        if(this._subscribers[x].id === identifier || this._subscribers[x].fn === identifier){
+      for(var x = 0, y = this._callbacks.length; x < y; x++){
+        if(this._callbacks[x].id == identifier || this._callbacks[x].fn == identifier){
           break;
         }
         oldIndex ++;
       }
 
-      sub = this._subscribers[oldIndex];
-      firstHalf = this._subscribers.slice(0, oldIndex);
-      lastHalf = this._subscribers.slice(oldIndex+1);
+      var sub = this._callbacks[oldIndex],
+          firstHalf = this._callbacks.slice(0, oldIndex),
+          lastHalf = this._callbacks.slice(oldIndex+1);
 
-      this._subscribers = firstHalf.concat(lastHalf);
-      this._subscribers.splice(priority, 0, sub);
+      this._callbacks = firstHalf.concat(lastHalf);
+      this._callbacks.splice(priority, 0, sub);
+
     },
 
-    addChannel: function(channel){
-      this._channels[channel] = new Channel((this.namespace ? this.namespace + ':' : '') + channel, this);
+    AddChannel: function(channel){
+      this._channels[channel] = new Channel((this.namespace ? this.namespace + ':' : '') + channel);
     },
 
-    hasChannel: function(channel){
+    HasChannel: function(channel){
       return this._channels.hasOwnProperty(channel);
     },
 
-    returnChannel: function(channel){
+    ReturnChannel: function(channel){
       return this._channels[channel];
     },
 
-    removeSubscriber: function(identifier){
-      var x = this._subscribers.length - 1;
+    // This will remove a subscriber recursively through its subchannels.
 
-      // If we don't pass in an id, we're clearing all
+    RemoveSubscriber: function(identifier){
       if(!identifier){
-        this._subscribers = [];
-        return;
+        this._callbacks = [];
+
+        for(var z in this._channels){
+          if(this._channels.hasOwnProperty(z)){
+            this._channels[z].RemoveSubscriber(identifier);
+          }
+        }
       }
 
-      // Going backwards makes splicing a whole lot easier.
-      for(x; x >= 0; x--) {
-        if(this._subscribers[x].fn === identifier || this._subscribers[x].id === identifier){
-          this._subscribers[x].channel = null;
-          this._subscribers.splice(x,1);
+      for(var y = 0, x = this._callbacks.length; y < x; y++) {
+        if(this._callbacks[y].fn == identifier || this._callbacks[y].id == identifier){
+          this._callbacks[y].channel = null;
+          this._callbacks.splice(y,1);
+          x--; y--;
         }
       }
     },
 
-    // This will publish arbitrary arguments to a subscriber and then to parent
-    // channels.
+    // This will publish arbitrary arguments to a subscriber recursively
+    // through its subchannels.
 
-    publish: function(data){
-      var x = 0,
-          y = this._subscribers.length,
-          called = false,
-          subscriber, l;
-
-      // Priority is preserved in the _subscribers index.
-      for(x, y; x < y; x++) {
+    Publish: function(data){
+      for(var y = 0, x = this._callbacks.length; y < x; y++) {
         if(!this.stopped){
-          subscriber = this._subscribers[x];
-          if(subscriber.options !== undefined && typeof subscriber.options.predicate === "function"){
-            if(subscriber.options.predicate.apply(subscriber.context, data)){
-              subscriber.fn.apply(subscriber.context, data);
-              called = true;
+          var callback = this._callbacks[y], l;
+
+          if(callback.options !== undefined && typeof callback.options.predicate === "function"){
+            if(callback.options.predicate.apply(callback.context, data)){
+              callback.fn.apply(callback.context, data);
             }
           }else{
-            subscriber.fn.apply(subscriber.context, data);
-            called = true;
+            callback.fn.apply(callback.context, data);
           }
         }
 
-        if(called && subscriber.options && subscriber.options !== undefined){
-          subscriber.options.calls--;
-
-          if(subscriber.options.calls < 1){
-            this.removeSubscriber(subscriber.id);
-            y--;
-            x--;
-          }else{
-            subscriber.update(subscriber.options);
-          }
-        }
+        l = this._callbacks.length;
+        if(l < x) y--; x = l;
       }
 
-      if(this._parent){
-        this._parent.publish(data);
+      for(var x in this._channels){
+        if(!this.stopped){
+          if(this._channels.hasOwnProperty(x)){
+            this._channels[x].Publish(data);
+          }
+        }
       }
 
       this.stopped = false;
@@ -238,12 +225,12 @@
   };
 
   function Mediator() {
-    if(!(this instanceof Mediator)) {
+    if (!this instanceof Mediator) {
       return new Mediator();
+    }else{
+      this._channels = new Channel('');
     }
-
-    this._channels = new Channel('');
-  }
+  };
 
   // A Mediator instance is the interface through which events are registered
   // and removed from publish channels.
@@ -253,24 +240,22 @@
     // Returns a channel instance based on namespace, for example
     // application:chat:message:received
 
-    getChannel: function(namespace){
-      var channel = this._channels,
-          namespaceHierarchy = namespace.split(':'),
-          x = 0, 
-          y = namespaceHierarchy.length;
+    GetChannel: function(namespace){
+      var channel = this._channels;
+      var namespaceHierarchy = namespace.split(':');
 
       if(namespace === ''){
         return channel;
       }
 
       if(namespaceHierarchy.length > 0){
-        for(x, y; x < y; x++){
+        for(var i = 0, j = namespaceHierarchy.length; i < j; i++){
 
-          if(!channel.hasChannel(namespaceHierarchy[x])){
-            channel.addChannel(namespaceHierarchy[x]);
+          if(!channel.HasChannel(namespaceHierarchy[i])){
+            channel.AddChannel(namespaceHierarchy[i]);
           }
 
-          channel = channel.returnChannel(namespaceHierarchy[x]);
+          channel = channel.ReturnChannel(namespaceHierarchy[i]);
         }
       }
 
@@ -283,69 +268,48 @@
     // should be called (based on the data published to it) and a priority
     // index.
 
-    subscribe: function(channelName, fn, options, context){
-      var channel = this.getChannel(channelName);
+    Subscribe: function(channelName, fn, options, context){
+      var options = options || {},
+          context = context || {},
+          channel = this.GetChannel(channelName),
+          sub = channel.AddSubscriber(fn, options, context);
 
-      options = options || {};
-      context = context || {};
-
-      return channel.addSubscriber(fn, options, context);
-    },
-
-    // Pass in a channel namespace, function to be called, options, and context
-    // to call the function in to Subscribe. It will create a channel if one
-    // does not exist. Options can include a predicate to determine if it
-    // should be called (based on the data published to it) and a priority
-    // index.
-
-    once: function(channelName, fn, options, context){
-      options = options || {};
-      options.calls = 1;
-
-      return this.subscribe(channelName, fn, options, context);
+      return sub;
     },
 
     // Returns a subscriber for a given subscriber id / named function and
     // channel namespace
 
-    getSubscriber: function(identifier, channel){
-      return this.getChannel(channel || "").getSubscriber(identifier);
+    GetSubscriber: function(identifier, channel){
+      return this.GetChannel(channel || "").GetSubscriber(identifier);
     },
 
     // Remove a subscriber from a given channel namespace recursively based on
     // a passed-in subscriber id or named function.
 
-    remove: function(channelName, identifier){
-      this.getChannel(channelName).removeSubscriber(identifier);
+    Remove: function(channelName, identifier){
+      this.GetChannel(channelName).RemoveSubscriber(identifier);
     },
 
     // Publishes arbitrary data to a given channel namespace. Channels are
     // called recursively downwards; a post to application:chat will post to
     // application:chat:receive and application:chat:derp:test:beta:bananas.
-    // Called using Mediator.publish("application:chat", [ args ]);
+    // Called using Mediator.Publish("application:chat", [ args ]);
 
-    publish: function(channelName){
+    Publish: function(channelName){
       var args = Array.prototype.slice.call(arguments, 1),
-          channel = this.getChannel(channelName);
+          channel = this.GetChannel(channelName);
 
       args.push(channel);
 
-      this.getChannel(channelName).publish(args);
+      this.GetChannel(channelName).Publish(args);
     }
   };
-
-  // Alias some common names for easy interop
-  Mediator.prototype.on = Mediator.prototype.subscribe;
-  Mediator.prototype.bind = Mediator.prototype.subscribe;
-  Mediator.prototype.emit = Mediator.prototype.publish;
-  Mediator.prototype.trigger = Mediator.prototype.publish;
-  Mediator.prototype.off = Mediator.prototype.remove;
 
   // Finally, expose it all.
 
   Mediator.Channel = Channel;
   Mediator.Subscriber = Subscriber;
-  Mediator.version = "0.9.4";
-
   return Mediator;
-}));
+
+});

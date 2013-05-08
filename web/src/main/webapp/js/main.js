@@ -29,6 +29,7 @@ require.config({
 require(['app', 'mediator'], function(App, Mediator) {
 	$('document').ready(function() {
 		console.log(Mediator);
+		Mediator.publish('working');
 		App();
 	});
 });
