@@ -5,9 +5,6 @@ require.config({
 		'underscore' : {
 			exports : '_'
 		},
-		'mediator' : {
-			exports : 'Mediator'
-		},
 		'jquery' : {
 			exports : 'jquery'
 		},
@@ -26,10 +23,8 @@ require.config({
 
 });
 
-require(['app', 'mediator'], function(App, Mediator) {
+require(['app'], function(App) {
 	$('document').ready(function() {
-		console.log(Mediator);
-		Mediator.publish('working');
 		App();
 	});
 });
