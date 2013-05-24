@@ -29,7 +29,7 @@ once you clone the project change the tomcat webapp path in your parent pom.xml.
 
 	mvn clean install
 
-One successfull built the project, you can start tomcat to test.
+One successfull built the project, you can start tomcat to test..
 
 ## Contributing
 Pull requests are welcome. Expecting some android and i-os developer to contribute to this.
