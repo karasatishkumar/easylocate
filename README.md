@@ -16,6 +16,7 @@ You need the following packages to be installed:
 * Maven 3.0.5
 * Git
 * MySql
+* Apache Httpd
 
 ## Building from source
 After completing the prerequisites, you can follow the instructions to build the project.
