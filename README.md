@@ -15,6 +15,7 @@ You need the following packages to be installed:
 * Tomcat 7
 * Maven 3.0.5
 * Git
+* MySql
 
 ## Building from source
 After completing the prerequisites, you can follow the instructions to build the project.
