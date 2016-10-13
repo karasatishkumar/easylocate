@@ -1,4 +1,4 @@
-## Easy Locate
+## Easy Locate [![Build Status](https://travis-ci.org/karasatishkumar/easylocate.svg?branch=master)](https://travis-ci.org/karasatishkumar/easylocate)
 This project I am trying to demonstrate the usage of restful web services. In this I have also included the restful web services security. 
 
 I have the plan to do the following thing
