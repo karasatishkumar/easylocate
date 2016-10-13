@@ -109,15 +109,23 @@
 					<target>1.5</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<outputDirectory>${tomcat-location}</outputDirectory>
-				</configuration>
-			</plugin>
 		</plugins>
-		<finalName>tripservice</finalName>
 	</build>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<configuration>
+							<outputDirectory>${tomcat-location}</outputDirectory>
+						</configuration>
+					</plugin>
+				</plugins>
+				<finalName>tripservice</finalName>
+			</build>
+		</profile>
+	</profiles>
 </project>
