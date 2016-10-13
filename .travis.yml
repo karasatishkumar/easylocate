@@ -1,0 +1,11 @@
+language: java
+
+jdk: 
+   - oraclejdk7
+
+script: mvn clean install
+
+notifications:
+    email:
+       - poojagarwal.027@gmail.com
+       - karasatishkumar@gmail.com
